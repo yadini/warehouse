@@ -1,0 +1,4 @@
+services:
+#    wh.example:
+#        class: Warehousing\WHBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

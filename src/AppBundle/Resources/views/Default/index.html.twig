@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Transference</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/jumbotron.css') }}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Make transference</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+         
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+
+    <div style="padding:10px"></div>
+
+    <div class="container">
+
+      <div>
+          
+          <div class="panel panel-default">
+              <div class="panel-heading">Select transference data:</div>
+              <div class="panel-body">
+                      <div class="col-md-2">
+                              
+                              <span><b>Warehouse origin:</b></span>
+
+                              <div class="dropdown" id='w_origin_dd'>
+                                <a class="btn dropdown-toggle" data-toggle="dropdown">
+                                  Select
+                                  <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                  {% for warehouse_o in warehouses_origin %}
+                                    <li><a id="{{ warehouse_o.getId() }}">{{ warehouse_o.getLabel() }}</a></li>
+                                  {% endfor %}
+                                </ul>
+                               </div>
+                     </div>
+
+                  
+
+                <div class="col-md-2">
+                              
+                              <span><b>Warehouse destiny:</b></span>
+                              <div class="dropdown" id='w_destiny_dd'>
+                                  <a class="btn dropdown-toggle" data-toggle="dropdown">
+                                    Select
+                                    <span class="caret"></span>
+                                  </a>
+                                  <ul class="dropdown-menu">
+                                  </ul>
+                              </div>
+                </div>
+
+
+                  <div class="col-md-2" id="transference_limit"><label>Transference Limit: </label></div>
+                  <div class="col-md-2" id="transference_value"><label>Transference Value: </label></div>
+
+
+                  <div class="col-md-2">
+                              
+                              <span><b>Transporter:</b></span>
+                              <div class="dropdown" id='transporter_dd'>
+                                  <a class="btn dropdown-toggle" data-toggle="dropdown">
+                                    Select
+                                    <span class="caret"></span>
+                                  </a>
+                                  <ul class="dropdown-menu">
+                                    {% for transporter in transporters %}
+                                      <li><a id="{{ transporter.getId() }}">{{ transporter.getLabel() }}</a></li>
+                                    {% endfor %}
+                                  </ul>
+                              </div>
+                    </div>
+
+                  
+              </div>
+          </div>
+
+          <div class="panel panel-default">
+              <div class="panel-heading">Select transference items:</div>
+              <div class="panel-body">
+
+                  <div class="row" id="0">
+
+                        <div class="col-md-2">
+                              
+                              <span><b>Pallet:</b></span>
+                              <div class="dropdown" id="pallet_sel">
+                                  <a class="btn dropdown-toggle" data-toggle="dropdown">
+                                      Select
+                                    <span class="caret"></span>
+                                  </a>
+                                  <ul class="dropdown-menu" id="pallets_dropdownmenu_elements_row_0">
+                                  </ul>
+                              </div>
+
+                        </div>
+
+                        <div class="col-md-2">
+                              
+                              <span><b>Master:</b></span>
+                              <div class="dropdown" id="master_sel">
+                                  <a class="btn dropdown-toggle" data-toggle="dropdown">
+                                    Select
+                                    <span class="caret"></span>
+                                  </a>
+                                  <ul class="dropdown-menu" id="masters_dropdownmenu_elements_row_0">
+                                  </ul>
+                              </div>
+                        </div>
+
+                        <div class="col-md-2">
+                              
+                              <span><b>Imei:</b></span>
+                              <div class="dropdown" id="imei_sel">
+                                  <a class="btn dropdown-toggle" data-toggle="dropdown">
+                                    Select
+                                    <span class="caret"></span>
+                                  </a>
+                                  <ul class="dropdown-menu" id="imeis_dropdownmenu_elements_row_0">
+                                  </ul>
+                              </div>
+                        </div>
+
+                        <div class="col-md-2 col-md-offset-2">
+                          <br>
+                          <button type="button" class="btn btn-primary" id="addbtn">Add</button>
+                          <button style="display:inline" class="btn btn-primary" type="button" id="delbtn">Del</button>
+                        </div>
+
+                </div>
+
+              </div>
+          </div>
+
+
+          
+      </div>
+
+        <div class='row'>
+
+          <button class="col-md-1 col-md-offset-5" type="button" id='submitbtn'>Accept</button>
+          <button class="col-md-1 col-md-offset-1" type="button" id='cancelbtn'>Cancel</button>
+
+        </div>
+
+    </div> 
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{ asset('js/jquery.js') }}"></script>
+   
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+     <script src="{{ asset('js/main.js') }}"></script>
+  </body>
+</html>
